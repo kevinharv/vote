@@ -3,7 +3,7 @@ package com.kevharv.vote.models;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
-enum STATE {
+enum State {
     AL,
     AK,
     AZ,
@@ -63,7 +63,7 @@ public class Address extends BaseEntity {
     private String addressLine1;
     private String addressLine2;
     private String city;
-    private STATE state; // TODO - Change to enum
+    private State state;
     private String zipcode;
     private String county;
     private String country;
@@ -71,7 +71,7 @@ public class Address extends BaseEntity {
     public Address() {
     }
 
-    public Address(String addressLine1, String addressLine2, String city, STATE state, String zipcode, String county,
+    public Address(String addressLine1, String addressLine2, String city, State state, String zipcode, String county,
             String country) {
         this.addressLine1 = addressLine1;
         this.addressLine2 = addressLine2;
@@ -106,11 +106,11 @@ public class Address extends BaseEntity {
         this.city = city;
     }
 
-    public STATE getState() {
+    public State getState() {
         return state;
     }
 
-    public void setState(STATE state) {
+    public void setState(State state) {
         this.state = state;
     }
 
