@@ -24,10 +24,11 @@ public class VoterRegistration extends BaseEntity {
     private String state;
 
     @OneToOne
-    @JoinColumn(name="voter_reg_addr", unique=true, nullable=false, updatable=false)
+    @JoinColumn(name="voter_reg_addr")
     private Address address;
 
     @OneToOne
+    @JoinColumn(name="voter_party")
     private PoliticalParty partyAffiliation;
 
     private Date submissionDate;

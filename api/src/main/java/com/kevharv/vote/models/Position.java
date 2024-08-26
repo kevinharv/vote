@@ -1,6 +1,8 @@
 package com.kevharv.vote.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -8,6 +10,9 @@ import jakarta.persistence.Table;
 public class Position extends BaseEntity {
     private String name;
     private String description;
+
+    @OneToOne
+    @JoinColumn(name = "position_geography")
     private Geography geography;
 
     public Position() {
