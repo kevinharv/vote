@@ -141,5 +141,5 @@ public class Election extends BaseEntity {
         return true;
     }
 
-    
+
 }
