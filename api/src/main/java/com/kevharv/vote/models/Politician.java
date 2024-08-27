@@ -13,11 +13,11 @@ public class Politician extends BaseEntity {
     private String displayName;
 
     @OneToOne
-    @JoinColumn(name = "politican_party")
+    @JoinColumn(name = "politican_party", unique = false)
     private PoliticalParty party;
 
     @OneToOne
-    @JoinColumn(name = "politican_geography")
+    @JoinColumn(name = "politican_geography", unique = false)
     private Geography homeGeography;
 
     public Politician() {}

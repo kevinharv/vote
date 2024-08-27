@@ -2,6 +2,8 @@
 
 # To-Do
 ## Planned
+- Fix geography model
+    - States, counties, municipalities should have parents
 - CRUD operations for applicable models
 - Ballot builder
 - Logging all operations

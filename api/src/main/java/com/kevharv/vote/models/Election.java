@@ -17,15 +17,15 @@ public class Election extends BaseEntity {
     private Date endDate;
     
     @OneToOne
-    @JoinColumn(name = "election_position")
+    @JoinColumn(name = "election_position", unique = false)
     private Position position;
 
     @OneToOne
-    @JoinColumn(name = "election_geo")
+    @JoinColumn(name = "election_geo", unique = false)
     private Geography geography;
 
     @OneToMany
-    @JoinColumn(name = "election_candidates")
+    @JoinColumn(name = "election_candidates", unique = false)
     private List<Politician> candidateList;
 
     public Election() {}

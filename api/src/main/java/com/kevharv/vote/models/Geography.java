@@ -3,22 +3,15 @@ package com.kevharv.vote.models;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
-enum GEOGRAPHY_TYPE {
-    COUNTRY,
-    STATE,
-    COUNTY,
-    MUNICIPALITY
-}
-
 @Entity
 @Table(name = "geographies")
 public class Geography extends BaseEntity {
     private String name;
-    private GEOGRAPHY_TYPE type;
+    private GeographyType type;
 
     public Geography() {}
 
-    public Geography(String name, GEOGRAPHY_TYPE type) {
+    public Geography(String name, GeographyType type) {
         this.name = name;
         this.type = type;
     }
@@ -31,11 +24,11 @@ public class Geography extends BaseEntity {
         this.name = name;
     }
 
-    public GEOGRAPHY_TYPE getType() {
+    public GeographyType getType() {
         return type;
     }
 
-    public void setType(GEOGRAPHY_TYPE type) {
+    public void setType(GeographyType type) {
         this.type = type;
     }
 

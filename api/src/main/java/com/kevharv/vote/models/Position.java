@@ -12,7 +12,7 @@ public class Position extends BaseEntity {
     private String description;
 
     @OneToOne
-    @JoinColumn(name = "position_geography")
+    @JoinColumn(name = "position_geography", unique = false)
     private Geography geography;
 
     public Position() {
