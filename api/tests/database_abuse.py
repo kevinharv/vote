@@ -26,7 +26,7 @@ def send_requests(url, payload, num_requests, max_workers=10):
 if __name__ == "__main__":
     url = "http://localhost:8080/parties"  # Replace with your URL
     payload = {"name": "Foo Party"}  # Replace with your payload
-    num_requests = 2_700_000
+    num_requests = 1_000_000
     max_workers = 100  # Adjust based on your system's capacity
 
     results = send_requests(url, payload, num_requests, max_workers=max_workers)

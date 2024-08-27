@@ -12,7 +12,7 @@ services:
     ports:
       - 5432:5432
     healthcheck:
-      test: ["CMD", "pg_isready", "-U", "postgres", "-d", "idm"]
+      test: ["CMD", "pg_isready", "-U", "postgres", "-d", "voting-db"]
       interval: 30s
       timeout: 5s
       retries: 5
