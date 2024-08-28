@@ -82,43 +82,43 @@ public class Bootstrap {
                         log.info("Adding positions");
                         List<Position> positions = new ArrayList<Position>(4);
                         positions.add(new Position("President", "President of The United States of America",
-                                        geographyRepository.findById(Long.parseLong("1")).get()));
+                                        geographyRepository.findByName("The United States of America")));
                         positions.add(new Position("Governor", "Governor of Texas",
-                                        geographyRepository.findById(Long.parseLong("2")).get()));
+                                        geographyRepository.findByName("Texas")));
                         positions.add(new Position("Sheriff", "Sheriff of Collin County",
-                                        geographyRepository.findById(Long.parseLong("3")).get()));
+                                        geographyRepository.findByName("Collin")));
                         positions.add(
                                         new Position("Mayor", "Mayor of Dallas",
-                                                        geographyRepository.findById(Long.parseLong("4")).get()));
+                                                        geographyRepository.findByName("Dallas")));
                         positionRepository.saveAll(positions);
 
                         // Create Politicians
                         log.info("Adding politicians");
                         List<Politician> politicians = new ArrayList<Politician>(8);
                         politicians.add(new Politician("Barack", "Obama",
-                                        partyRepository.getPartyByName("Democratic Party"),
-                                        geographyRepository.findById(geographies.get(0).getId()).get()));
+                                        partyRepository.findByName("Democratic Party"),
+                                        geographyRepository.findByName("The United States of America")));
                         politicians.add(new Politician("Mitt", "Romney",
-                                        partyRepository.findById(parties.get(1).getId()).get(),
-                                        geographyRepository.findById(geographies.get(0).getId()).get()));
+                                        partyRepository.findByName("Republican Party"),
+                                        geographyRepository.findByName("The United States of America")));
                         politicians.add(new Politician("Greg", "Abbott",
-                                        partyRepository.findById(parties.get(1).getId()).get(),
-                                        geographyRepository.findById(geographies.get(1).getId()).get()));
+                                        partyRepository.findByName("Republican Party"),
+                                        geographyRepository.findByName("Texas")));
                         politicians.add(new Politician("Beto", "O'Rourke",
-                                        partyRepository.findById(parties.get(0).getId()).get(),
-                                        geographyRepository.findById(geographies.get(1).getId()).get()));
+                                        partyRepository.findByName("Democratic Party"),
+                                        geographyRepository.findByName("Texas")));
                         politicians.add(new Politician("Foo", "Person",
-                                        partyRepository.findById(parties.get(0).getId()).get(),
-                                        geographyRepository.findById(geographies.get(2).getId()).get()));
+                                        partyRepository.findByName("Democratic Party"),
+                                        geographyRepository.findByName("Collin")));
                         politicians.add(new Politician("Bar", "Person",
-                                        partyRepository.findById(parties.get(1).getId()).get(),
-                                        geographyRepository.findById(geographies.get(2).getId()).get()));
+                                        partyRepository.findByName("Republican Party"),
+                                        geographyRepository.findByName("Collin")));
                         politicians.add(new Politician("Fizz", "Politician",
-                                        partyRepository.findById(parties.get(0).getId()).get(),
-                                        geographyRepository.findById(geographies.get(3).getId()).get()));
+                                        partyRepository.findByName("Republican Party"),
+                                        geographyRepository.findByName("Dallas")));
                         politicians.add(new Politician("Buzz", "Politician",
-                                        partyRepository.findById(parties.get(1).getId()).get(),
-                                        geographyRepository.findById(geographies.get(3).getId()).get()));
+                                        partyRepository.findByName("Democratic Party"),
+                                        geographyRepository.findByName("Dallas")));
                         politicianRepository.saveAll(politicians);
 
                         // Create Elections
@@ -126,16 +126,20 @@ public class Bootstrap {
                         Election FedPres2012 = new Election("USA Federal Presidential Election 2012",
                                         new GregorianCalendar(2012, 10, 5, 0, 0).getTime(),
                                         new GregorianCalendar(2012, 10, 6, 0, 0).getTime(),
-                                        positionRepository.findById(positions.get(0).getId()).get(),
-                                        geographyRepository.findById(geographies.get(0).getId()).get());
+                                        positionRepository.findByName("President"),
+                                        geographyRepository.findByName("The United States of America"));
+                        log.info("Adding candidates");
                         List<Politician> presidentialCandidates = new ArrayList<Politician>(2);
-                        presidentialCandidates.add(politicianRepository.findById(politicians.get(0).getId()).get());
-                        presidentialCandidates.add(politicianRepository.findById(politicians.get(1).getId()).get());
+                        presidentialCandidates.add(politicianRepository.findByLastName("Romney"));
+                        presidentialCandidates.add(politicianRepository.findByLastName("Obama"));
+                        log.info("Created candidate list");
                         FedPres2012.setCandidateList(presidentialCandidates);
                         electionRepository.save(FedPres2012);
 
                         // Create User
                         // Create Voter Registration
+
+                        log.info("Bootstrap complete");
                 };
         }
 }

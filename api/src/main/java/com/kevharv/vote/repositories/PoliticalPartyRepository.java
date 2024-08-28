@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.kevharv.vote.models.PoliticalParty;
 
-public interface PoliticalPartyRepository extends CrudRepository<PoliticalParty, Long>, CustomPoliticalPartyRepository {
-
+public interface PoliticalPartyRepository extends CrudRepository<PoliticalParty, Long> {
+    PoliticalParty findByName(String name);
 }

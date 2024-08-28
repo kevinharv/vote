@@ -2,6 +2,7 @@ package com.kevharv.vote.models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
@@ -12,11 +13,11 @@ public class Politician extends BaseEntity {
     private String lastName;
     private String displayName;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "politican_party", unique = false)
     private PoliticalParty party;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "politican_geography", unique = false)
     private Geography homeGeography;
 

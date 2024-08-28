@@ -1,21 +1,20 @@
 package com.kevharv.vote.repositories;
 
-import com.kevharv.vote.models.PoliticalParty;
+import com.kevharv.vote.models.Geography;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 
-public class PoliticalPartyRepositoryImpl {
-
+public class GeographyRepositoryImpl {
     @PersistenceContext
     private EntityManager entityManager;
 
-    private static final String FIND_PARTY_BY_NAME = "SELECT p FROM PoliticalParty p WHERE p.name = :name";
+    private static final String FIND_GEO_BY_NAME = "SELECT g FROM Geography g WHERE g.name = :name";
 
-    public PoliticalParty findByName(String name) {
+    public Geography findByName(String name) {
         try {
-            TypedQuery<PoliticalParty> query = entityManager.createQuery(FIND_PARTY_BY_NAME, PoliticalParty.class);
+            TypedQuery<Geography> query = entityManager.createQuery(FIND_GEO_BY_NAME, Geography.class);
             query.setParameter("name", name);
 
             return query.getSingleResult();

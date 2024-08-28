@@ -5,6 +5,7 @@ import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -16,11 +17,11 @@ public class Election extends BaseEntity {
     private Date startDate;
     private Date endDate;
     
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "election_position", unique = false)
     private Position position;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "election_geo", unique = false)
     private Geography geography;
 
